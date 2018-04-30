@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!--
+http://www.haorooms.com/post/web_spa
+单页应用示例, 通过#路由 url#A url#B 和url#C 分别显示不同的div
+-->
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        body {
+            height: 500px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            font-size: 500px;
+            text-align: center;
+            display: none;
+        }
+        .a {
+            background-color: pink;
+            display: block;
+        }
+        .b {
+            background-color: red;
+        }
+        .c {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+<div id="A" class="a haorooms">A</div>
+<div id="B" class="b haorooms">B</div>
+<div id="C" class="c haorooms">C</div>
+</body>
+<script type="text/javascript">
+    function hashChanged(hashObj) {
+        //变化之后的url
+        var newhash = hashObj.newURL.split('#')[1];
+        //变化之前的url
+        var oldhash = hashObj.oldURL.split('#')[1];
+        //将对应的hash下界面显示和隐藏
+        document.getElementById(oldhash).style.display = 'none';
+        document.getElementById(newhash).style.display = 'block';
+    }
+    //监听路由变化
+    window.onhashchange = hashChanged;
+</script>
+</html>

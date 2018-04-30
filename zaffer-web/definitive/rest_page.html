@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.css"/>
+    <script src="../libs/jquery/jquery-3.3.1.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.js"></script>
+
+    <script src="rest_page.js"></script>
+
+    <style>
+        #bl_method {
+            width: 160px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" style="width: 1440px;">
+    <h1>Request</h1>
+    <!-- URL input -->
+    <div style="width: 1440px;">
+        <div>
+            <lable id="bl_method" class="text-secondary">METHOD</lable>
+            <lable class="text-secondary">SCHEME://HOST[":"PORT][PATH["?"QUERY]]
+            </lable>
+        </div>
+        <div style="margin-bottom: 40px;">
+            <select id="slct_method" class="custom-select"
+                    style="width:160px; left: 0;">
+                <option value="get" selected>GET</option>
+                <option value="post">POST</option>
+                <option value="delete">DELETE</option>
+                <option value="put">PUT</option>
+            </select>
+            <input id="ipt_url" type="" class="form-control"
+                   style="width:480px; display: inline;"/>
+            <button id="bt_send" class="btn btn-primary"
+                    style="width:80px; height: 40px;">
+                发送
+            </button>
+        </div>
+        <hr/>
+    </div>
+    <!-- header and body -->
+    <div>
+        <div id="div_header" style="float: left; width: 50%;">
+            <label style="margin-bottom: 0px;">HEADER</label>
+            <hr style="margin-top:5px; "/>
+            <button id="bt_add_header" class="btn" style="margin-bottom: 20px;">
+                Add Header
+            </button>
+        </div>
+
+        <div style="float: right">
+            <label>Body</label>
+            <hr/>
+            <!--<input type="text" style="width:480px; height:80px;"/>-->
+            <textarea style="width: 500px;height: 500px;" readonly="readonly"></textarea>
+
+        </div>
+        <hr style="width:2px;height:100px;"/>
+    </div>
+</div>
+
+</body>
+</html>

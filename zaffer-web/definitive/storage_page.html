@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+ 该页面用于测试local storage，session storage和Cookie
+ -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../libs/jquery/jquery-3.3.1.js"></script>
+
+    <script>
+
+        mapObj = new Map([['key1', 'value1'], ['key2', 'value2']]);
+        mapObj.set('key3', 'value3');
+
+        headerID = 0;
+
+        function addHeaderElement() {
+            var headerCheckbox = document.createElement("input");
+            headerCheckbox.type = "checkbox";
+            var headerKey = document.createElement("input");
+            var headerValue = document.createElement("input");
+            var delButton = document.createElement("button");
+            delButton.setAttribute("id", "delBt" + headerID);
+            delButton.innerHTML = 'X';
+
+            var headerLineDiv = document.createElement("div");
+            headerLineDiv.setAttribute("id", "headerDiv" + headerID);
+            headerLineDiv.appendChild(headerCheckbox);
+            headerLineDiv.appendChild(headerKey);
+            headerLineDiv.appendChild(headerValue);
+            headerLineDiv.appendChild(delButton);
+            mapObj.set('delBt' + headerID, 'headerDiv' + headerID);
+            headerID++;
+            return headerLineDiv;
+        }
+
+        //window.spaRouters = new SpaRouters();
+        // 简写, 也可以写成$(document).ready(function fn() {});
+        $(function () {
+            var bt = document.getElementById("add_header_bt");
+            bt.onclick = function () {
+
+                /*var element = document.getElementById("div_header");
+                element.appendChild(addHeaderElement());*/
+                if(typeof(mapObj2) == 'undefined') {
+                    alert('mapObj2 is undefined');
+                    mapObj2 = new Map([['key1', 'value1'], ['key2', 'value2']]);
+                    mapObj2.set('key3', 'value3');
+                } else {
+                    alert('mapObj2 is defined');
+                }
+            };
+
+            //$("#div_header").appendChild(add_header_element());
+            var element = document.getElementById("div_header");
+            element.appendChild(addHeaderElement());
+
+            //alert(mapObj.get('key1'));
+            //alert('alert: ' + mapObj2.get('key1'));
+        });
+
+    </script>
+
+</head>
+<body>
+
+<div id="div_header">
+    <button id="add_header_bt">Add Header</button>
+    <!--<div>
+        <input type="checkbox"/><input/><input/>
+        <button>X</button>
+    </div>
+    <div>
+        <input type="checkbox"/>
+        <input/>
+        <input/>
+        <button>X</button>
+    </div>-->
+</div>
+
+</body>
+</html>

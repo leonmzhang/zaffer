@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .cal-container {
+            background-color: #878787;
+            width: 234px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 0px;
+            width: 55px;
+            height: 46px;
+            font-size: 22px;
+            background-color: #D7D7D7;
+        }
+
+        .btn:active {
+            background-color: #A3A3A3;
+        }
+
+        .btn-big {
+            width: 114px;
+        }
+
+        .btn-orange {
+            color: #ffffff;
+            background-color: #F37F26;
+        }
+
+        .btn-orange:active {
+            background-color: #B55F1C;
+        }
+
+        .row-container {
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+        .ipt_num {
+            border: none;
+            background-color: #878787;
+            padding-right: 4px;
+            width: 227px;
+            height: 60px;
+
+            font-size: 45px;
+            color: #FFFFFF;
+            text-align: right;
+        }
+
+    </style>
+
+    <script src="../libs/jquery/jquery-3.3.1.js" ></script>
+
+    <script>
+        $(function init_calculator() {
+            $("#ac_bt").text("AC");
+            //$("#num_input").attr("value", "0");
+            $("#num_input").val("0");
+        });
+
+        function bt_click(bt_num) {
+            var num_input = document.getElementById("num_input");
+            var ac_bt = document.getElementById("ac_bt");
+            if(num_input.value == '0') {
+                num_input.value = bt_num;
+                ac_bt.innerText = "C";
+                //num_input.innerText = bt_num;
+            } else {
+                num_input.value += bt_num;
+                //num_input.innerText += bt_num;
+            }
+        }
+
+        function bt_clear() {
+            var num_input = document.getElementById("num_input");
+            num_input.value = '0';
+            var ac_bt = document.getElementById("ac_bt");
+            ac_bt.innerText = "AC";
+        }
+    </script>
+
+</head>
+<body>
+
+<div style="padding-left: 20px; padding-top: 20px;">
+
+    <div class="cal-container">
+        <div class="row-container">
+            <input id="num_input" class="ipt_num" readonly="readonly"/>
+            <!--<label id="num_input" class="ipt_num" readonly="readonly"/>-->
+        </div>
+
+        <div class="row-container">
+            <!--<button id="ac_bt" class="btn" onclick="bt_clear()">AC</button>-->
+            <button id="ac_bt" class="btn" onclick="bt_clear()"></button>
+            <button class="btn">+/-</button>
+            <button class="btn">%</button>
+            <button class="btn btn-orange">/</button>
+        </div>
+
+        <div class="row-container">
+            <button class="btn" onclick="bt_click('7')">7</button>
+            <button class="btn" onclick="bt_click('8')">8</button>
+            <button class="btn" onclick="bt_click('9')">9</button>
+            <button class="btn btn-orange">*</button>
+        </div>
+
+        <div class="row-container">
+            <button class="btn" onclick="bt_click('4')">4</button>
+            <button class="btn" onclick="bt_click('5')">5</button>
+            <button class="btn" onclick="bt_click('6')">6</button>
+            <button class="btn btn-orange">-</button>
+        </div>
+
+        <div class="row-container">
+            <button class="btn" onclick="bt_click('1')">1</button>
+            <button class="btn" onclick="bt_click('2')">2</button>
+            <button class="btn" onclick="bt_click('3')">3</button>
+            <button class="btn btn-orange">+</button>
+        </div>
+
+        <div class="row-container">
+            <button class="btn btn-big">0</button>
+            <button class="btn">.</button>
+            <button class="btn btn-orange">=</button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
